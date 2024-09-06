@@ -5,7 +5,6 @@ import db from './db';
 import { auth, clerkClient, currentUser } from '@clerk/nextjs/server';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { log } from 'console';
 
 export const createProfileAction = async (
   prevState: any,
@@ -26,15 +25,12 @@ export const createProfileAction = async (
         ...validatedFields,
       },
     });
-
     await clerkClient.users.updateUserMetadata(user.id, {
       privateMetadata: {
         hasProfile: true,
       },
     });
-    console.log(validatedFields);
   } catch (error) {
-    console.log(error);
     return {
       message: error instanceof Error ? error.message : 'An error occurred',
     };
