@@ -2,6 +2,8 @@ import { SubmitButton } from '@/components/form/Buttons';
 import FormContainer from '@/components/form/FormContainer';
 import FormInput from '@/components/form/FormInput';
 import { createProfileAction } from '@/utils/actions';
+import { currentUser } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
 
 function CreateProfilePage() {
   return (
@@ -12,7 +14,7 @@ function CreateProfilePage() {
           <div className="grid md:grid-cols-2 gap-4 mt-4">
             <FormInput type="text" name="firstName" label="First Name" />
             <FormInput type="text" name="lastName" label="Last Name" />
-            <FormInput type="text" name="userName" label="UserName" />
+            <FormInput type="text" name="username" label="UserName" />
           </div>
           <SubmitButton text="Create Profile" className="mt-8 " />
         </FormContainer>
