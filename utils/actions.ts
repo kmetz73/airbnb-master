@@ -26,12 +26,15 @@ export const createProfileAction = async (
         ...validatedFields,
       },
     });
+
     await clerkClient.users.updateUserMetadata(user.id, {
       privateMetadata: {
         hasProfile: true,
       },
     });
+    console.log(validatedFields);
   } catch (error) {
+    console.log(error);
     return {
       message: error instanceof Error ? error.message : 'An error occurred',
     };
